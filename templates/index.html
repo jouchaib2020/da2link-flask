@@ -1,19 +1,30 @@
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Da2Link</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %}{% endblock %}
+  </head>
 
-<body>
-    <div class="App">
-        <header class="App-header">
-            <img src="{{ url_for('static', filename='Octocat.png') }}" class="App-logo" alt="logo" />
-            <p>
-                GitHub Codespaces <span class="heart">♥️</span> Flask
-            </p>
-            <p class="small">
-                Edit <code>templates/index.html</code> and refresh to see your changes!
-            </p>
-        </header>
+  <body>
+    <div class="wrapper">  
+    <div class="container">            
+      {% block body %}
+        <form action="/" method="post">
+            <h1>Da2Link</h1>
+            <h3>Enter Subtitles's URL</h3>
+            <input name="url" type="text" id="url" placeholder="url" />
+            <button type="submit" id="submit-btn">Submit</button>
+        </form>
+        <p id="result-message" style="display: none;">{subs}</p>
+        <div id="response-container"></div>
+      {% endblock %}
     </div>
-</body>
+    </div>
 
+   
+    
+    
+  </body>
 </html>
