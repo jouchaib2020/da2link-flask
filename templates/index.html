@@ -3,28 +3,41 @@
   <head>
     <title>Da2Link</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="../static/main.css">
     {% block head %}{% endblock %}
   </head>
 
   <body>
-    <div class="wrapper">  
-    <div class="container">            
+    <div class="wrapper">        
       {% block body %}
-        <form action="/" method="post">
-            <h1>Da2Link</h1>
-            <h3>Enter Subtitles's URL</h3>
-            <input name="url" type="text" id="url" placeholder="url" />
-            <button type="submit" id="submit-btn">Submit</button>
-        </form>
-        <p id="result-message" style="display: none;">{subs}</p>
-        <div id="response-container"></div>
+      <h2>Enter Subs URL</h2>
+      <form id="submit-form" action="/" method="post">
+        <div class="user-box">
+            <input name="url" type="text" id="url" placeholder="" required="">
+            <label>URL</label>
+          </div>
+          <a href="#" id='submit-link'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Submit
+          </a>
+      </form>
       {% endblock %}
     </div>
-    </div>
-
-   
-    
-    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          const submitLink = document.getElementById("submit-link");
+          const form = document.getElementById("submit-form");
+  
+          submitLink.addEventListener("click", function(event) {
+              event.preventDefault(); // Prevent the link from navigating
+  
+              // Trigger the form submission
+              form.submit();
+          });
+      });
+    </script>
   </body>
 </html>
