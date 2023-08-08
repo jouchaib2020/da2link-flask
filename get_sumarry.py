@@ -10,7 +10,10 @@ openai.api_key = os.environ.get('API_KEY')
 
 # Define a function to get a response from ChatGPT
 def get_response(prompt):
-  messages = [{"role": "user", "content": prompt}]
+  messages = [
+    {"role": "user", "content": "What is 1+1"},
+    {"role": "user", "content": prompt}
+    ]
   response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=messages,
@@ -19,9 +22,8 @@ def get_response(prompt):
   return response.choices[0].message["content"]
 
 # Get a response from ChatGPT
-prompt = "What is 1+1"
-response_1 = get_response(prompt)
-response = get_response("what was my last question")
+prompt = "what was my last question"
+response = get_response(prompt)
 
 # Print the response
 print(response)
