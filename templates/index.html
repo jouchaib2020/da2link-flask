@@ -10,8 +10,8 @@
   <body>
     <div class="wrapper">        
       {% block body %}
-      <h2>Enter Subs URL</h2>
       <form id="submit-form" action="/" method="post">
+        <h2>Enter Subs URL</h2>
         <div class="user-box">
             <input name="url" type="text" id="url" placeholder="" required="">
             <label>URL</label>
@@ -25,15 +25,30 @@
           </a>
       </form>
       {% endblock %}
+      <div id="loading-screen" style="display: none;">
+        <div id="loading-spinner"></div>
+      </div>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
           const submitLink = document.getElementById("submit-link");
           const form = document.getElementById("submit-form");
+          const loadingScreen = document.getElementById("loading-screen");
+
+          const pauseAnimation = (element)=>{
+            element.style.animationPlayState = "paused";
+
+            const childElements = element.children;
+            for (const child of childElements) {
+              pauseAnimation(child);
+            }
+          }
   
           submitLink.addEventListener("click", function(event) {
               event.preventDefault(); // Prevent the link from navigating
-  
+              loadingScreen.style.display = "flex";
+              
+              pauseAnimation(submitLink)
               // Trigger the form submission
               form.submit();
           });

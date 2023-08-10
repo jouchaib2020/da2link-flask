@@ -11,7 +11,7 @@ openai.api_key = os.environ.get('API_KEY')
 
 # Define a function to get a response from ChatGPT
 
-def get_response(prompt):
+async def get_response(prompt):
   response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=messages(prompt),

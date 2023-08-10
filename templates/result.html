@@ -1,16 +1,17 @@
 {% extends 'index.html' %}
 {% block head %}
+<title>Your post is ready ✨</title>
 {% endblock %}
 
 {% block body %}
 <p>{{subs}}</p>
-<form id="submit-form" action="/" method="post">
-      <a href="#" id='submit-link'>
+<form id="submit-form" action="/" method="get">
+      <a href="/" id='submit-link'>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         Go Back
       </a>
-  </form>>
+  </form>
 {% endblock %}
