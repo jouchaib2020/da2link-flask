@@ -6,11 +6,10 @@ from messages import messages
 # Load variables from .env file into environment
 load_dotenv()
 
-# Set your API key
-openai.api_key = os.environ.get('API_KEY')
+# Setting API key
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
-# Define a function to get a response from ChatGPT
-
+# function to get a response from ChatGPT
 async def get_response(prompt):
   response = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
